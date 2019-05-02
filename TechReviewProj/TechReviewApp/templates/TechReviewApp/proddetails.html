@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ prod.productname }}</h2>
+<p>Product Type: {{ prod.producttype }} </p>
+<p>URL: {{ prod.producturl }}</p>
+<p>Price: {{ prod.productprice }}</p>
+<p>Added by: {{ prod.user }}</p>
+<p>Description: {{ prod.productdescription }}</p>
+<p>Number Of Reviews: {{ reviewcount }}</p>
+<h3>Reviews</h3>
+{% for r in reviews %}
+    <h4>{{ r.reviewtitle }}</h4>
+    <p>{{ r.reviewdate }}</p>
+    <p>{{ r.rating }}</p>
+    <p>{{ r.text }}</p>
+{% endfor %}
+
+{% endblock %}
