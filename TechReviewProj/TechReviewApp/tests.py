@@ -3,6 +3,7 @@ from .views import index, getTypes, getProducts
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import TechType, Product, Review
+from .forms import ProductForm
 
 # Create your tests here.
 # Test for models.
@@ -45,3 +46,31 @@ class GetProductsTest(TestCase):
     def test_product_detail_success(self):
         response=self.client.get(reverse('productdetails', args=(self.prod.id,)))
         self.assertEqual(response.status_code, 200)
+
+# Form tests.
+# class Product_Form_Test(TestCase):
+#     # setup 
+#     def setUp(self):
+#         self.user=User.objects.create(username='myUser')
+        
+
+#     # tests all fields filled
+#     def test_productform_is_valid(self):
+#         form=ProductForm(data={'productname': "type1", 'producttype' : "some type"
+#         ,'username' : "myUser",'productprice' : "100.00" , 'productentrydate' : "2019-05-16", 'producturl' : "https://www.example.com/"
+#         ,'productdescription' : "some description"})
+#         self.assertTrue(form.is_valid())
+
+#     # tests fields excluding optional fields
+#     def test_productform_minus_descript(self):
+#         form=ProductForm(data={'productname': "type1", 'producttype' : "some type"
+#         ,'username' : "myUser",'productprice' : "100.00" , 'productentrydate' : "2019-05-16"
+#         ,'productdescription' : "some description"})
+#         self.assertTrue(form.is_valid())
+
+#     # test fields empty
+#     def test_productform_empty(self):
+#         form=ProductForm(data={'productname': "", 'producttype' : ""
+#         ,'username' : "",'productprice' : "" , 'productentrydate' : "" 
+#         ,'productdescription' : ""})
+#         self.assertFalse(form.is_valid())
